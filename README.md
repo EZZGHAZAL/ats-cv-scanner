@@ -40,6 +40,8 @@ reproducible and easy to extend — add verbs/buzzwords/section synonyms in
 
 Requires **Python 3.12+**.
 
+### macOS / Linux
+
 ```bash
 # 1. Install dependencies
 python -m venv .venv && source .venv/bin/activate
@@ -52,6 +54,24 @@ pip install -r requirements.txt
 # 3. Open the UI
 open http://localhost:8000
 ```
+
+### Windows (CMD)
+
+Run each line from the project folder:
+
+```bat
+py -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+
+REM Run the app (either works)
+run.bat
+uvicorn app.main:app --reload
+```
+
+Then open http://localhost:8000 in your browser. If `py` isn't recognized, use
+`python` instead. Do **not** use `./run.sh` on Windows — that's a Unix script;
+use `run.bat`.
 
 ## API
 
