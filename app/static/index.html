@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ATS CV Scanner — Score &amp; improve your resume</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%84%3C/text%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="logo">ATS</span>
+        <div>
+          <h1>ATS CV Scanner</h1>
+          <p>Scan your resume, get an ATS score, and learn exactly what to fix.</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card upload-card" id="upload-section">
+        <h2>Upload your CV</h2>
+        <form id="scan-form">
+          <label
+            class="dropzone"
+            id="dropzone"
+            for="file-input"
+            tabindex="0"
+            role="button"
+            aria-label="Upload your CV"
+          >
+            <div class="dropzone-inner">
+              <span class="dz-icon">⬆</span>
+              <span class="dz-title" id="dz-title">Drop your CV here or click to browse</span>
+              <span class="dz-hint">PDF, DOCX or TXT · up to 5&nbsp;MB</span>
+            </div>
+            <input
+              id="file-input"
+              name="file"
+              type="file"
+              accept=".pdf,.docx,.txt,.text,.md"
+              hidden
+            />
+          </label>
+
+          <details class="jd-toggle">
+            <summary>Add a job description for keyword matching (optional)</summary>
+            <textarea
+              id="job-description"
+              name="job_description"
+              rows="6"
+              placeholder="Paste the job description here to score how well your CV matches the role's keywords…"
+            ></textarea>
+          </details>
+
+          <button type="submit" id="scan-btn" class="primary" disabled>
+            Scan my CV
+          </button>
+          <p class="error" id="error" hidden></p>
+        </form>
+      </section>
+
+      <section id="loading" class="card" hidden>
+        <div class="spinner" aria-hidden="true"></div>
+        <p>Analyzing your resume…</p>
+      </section>
+
+      <section id="results" hidden>
+        <div class="card score-card">
+          <div class="score-ring" id="score-ring">
+            <span class="score-value" id="score-value">0</span>
+            <span class="score-max">/ 100</span>
+          </div>
+          <div class="score-meta">
+            <span class="rating-pill" id="rating-pill">—</span>
+            <p id="score-summary"></p>
+            <div class="stat-row" id="stat-row"></div>
+          </div>
+        </div>
+
+        <div class="card" id="top-fixes-card">
+          <h2>Top things to fix</h2>
+          <ol class="fix-list" id="top-fixes"></ol>
+        </div>
+
+        <div class="grid-2">
+          <div class="card" id="categories-card">
+            <h2>Score breakdown</h2>
+            <div id="categories"></div>
+          </div>
+          <div class="card" id="keywords-card" hidden>
+            <h2>Job-description keywords</h2>
+            <div class="kw-block">
+              <h3>Matched</h3>
+              <div class="kw-tags" id="kw-matched"></div>
+            </div>
+            <div class="kw-block">
+              <h3>Missing</h3>
+              <div class="kw-tags" id="kw-missing"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="recs-card">
+          <h2>All recommendations</h2>
+          <ul class="rec-list" id="recommendations"></ul>
+        </div>
+
+        <button type="button" class="secondary" id="rescan-btn">Scan another CV</button>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Rule-based + NLP analysis — runs entirely on your server, no third-party
+        API. Scores are guidance, not a guarantee of any specific ATS outcome.
+      </p>
+    </footer>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
